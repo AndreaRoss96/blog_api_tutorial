@@ -2,7 +2,7 @@ bcrypt==3.1.4
 pyjwt==1.6.4
 jinja2==2.10
 idna==2.7
-psycopg2==2.7.5
+psycopg2
 alembic==1.0.0
 more-itertools==4.2.0
 python-coveralls==2.9.1
