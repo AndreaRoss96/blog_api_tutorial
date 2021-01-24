@@ -3,3 +3,4 @@ apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 python3 -m ensurepip
 pip3 install --no-cache --upgrade pip setuptools
 apk --update --upgrade add gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
+pip install -r requirements.txt --ignore-installed

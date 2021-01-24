@@ -8,15 +8,21 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      service: postgres
+      app: postgres
   template:
     metadata:
       labels:
-        service: postgres
+        app: postgres
     spec:
       containers:
       - name: postgres
-        image: postgres:12-alpine
+        image: postgres:13.1-alpine
+        # imagePullPolicy: "IfNotPresent"
+        # ports:
+        #  - containerPort: 5432
+        envFrom:
+         - configMapRef:
+             name: postgres-config
         env:
           - name: POSTGRES_USER
             valueFrom:
