@@ -22,14 +22,11 @@ class Auth():
         'iat': datetime.datetime.utcnow(),
         'sub': user_id
       }
-      print (payload)
-      encoded = jwt.encode(
+      return jwt.encode(
         payload,
         os.getenv('JWT_SECRET_KEY'),
         'HS256'
-      )
-      print(encoded)
-      return encoded
+      ).decode("utf-8")
     except Exception as e:
       return Response(
         mimetype="application/json",

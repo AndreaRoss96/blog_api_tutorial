@@ -5,3 +5,5 @@ pip3 install --no-cache --upgrade pip setuptools
 apk --update --upgrade add gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
 pip install -r requirements.txt --ignore-installed
 mkdir kubernetes' volume
+
+sudo docker rmi $(sudo docker images --format '{{.ID}}' --filter=dangling=true) --force && sudo docker rmi $(sudo docker images -a --format '{{.ID}}' --filter=dangling=true) --force

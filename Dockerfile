@@ -30,9 +30,10 @@ COPY ./requirements.txt /usr/src/blog_api_tutorial/requirements.txt
 RUN pip3 install -r pip_requirements.txt
 
 #piprequirements
-RUN pipenv --python /usr/bin/python3 
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN pipenv --python /usr/bin/python3
+RUN cd /usr/src/blog_api_tutorial/
 RUN pipenv shell
+RUN pipenv install --system --deploy --ignore-pipfile
 RUN pipenv install -r requirements.txt
 
 #Set ENV variables
