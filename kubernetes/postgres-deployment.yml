@@ -17,23 +17,23 @@ spec:
       containers:
       - name: postgres
         image: postgres:13.1-alpine
-        # imagePullPolicy: "IfNotPresent"
-        # ports:
-        #  - containerPort: 5432
+        imagePullPolicy: "IfNotPresent"
+        ports:
+         - containerPort: 5432
         envFrom:
          - configMapRef:
              name: postgres-config
         env:
-          - name: POSTGRES_USER
-            valueFrom:
-              secretKeyRef:
-                name: postgres-credentials
-                key: user
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres-credentials
-                key: password
+          # - name: POSTGRES_USER
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: postgres-credentials
+          #       key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
         volumeMounts:
           - name: postgres-volume-mount
             mountPath: /var/lib/postgresql/data
@@ -41,4 +41,3 @@ spec:
       - name: postgres-volume-mount
         persistentVolumeClaim:
           claimName: postgres-pvc
-      restartPolicy: Always

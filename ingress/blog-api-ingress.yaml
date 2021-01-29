@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blog-api-ingress
+spec:
+  rules:
+    - host: blog-api.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-api-lb
+                port:
+                  number: 8090
